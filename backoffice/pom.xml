@@ -31,6 +31,17 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- Generation des codes QR -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.5.2</version>
+		</dependency>
 		<!-- Dependance mockito pour les tests -->
 		<dependency>
 			<groupId>org.mockito</groupId>
