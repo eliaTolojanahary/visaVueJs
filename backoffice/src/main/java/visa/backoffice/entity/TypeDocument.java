@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="statut_demande")  // Correction: changed from "type_demande"
-public class StatutDemande {
+@Table(name="type_document")
+public class TypeDocument {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;

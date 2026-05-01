@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,7 +16,9 @@ public class Passeport {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
-    // private demandeur_id;
+    @ManyToOne
+    private Demandeur demandeur;
+
     private String numPasseport;
     private Date dateDelivrance;
     private Date dateExp;
@@ -24,6 +27,7 @@ public class Passeport {
     private Date updatedAT;
     
     /* Setters */
+    public Demandeur getDemandeur(){ return this.demandeur ; }
     public String getNumPasseport(){ return this.numPasseport ; }
     public String getPaysDelivrance(){ return this.paysDelivrance ; }
     public Date getCreatedAT(){ return this.createdAT; }
@@ -33,6 +37,7 @@ public class Passeport {
     public long getId(){ return this.id; }
 
     /* Getters */
+    public void setDemandeur(Demandeur Demandeur){  this.demandeur = Demandeur; }
     public void setNumPasseport(String NumPasseport){  this.numPasseport = NumPasseport; }
     public void setPaysDelivrance(String PaysDelivrance){  this.paysDelivrance = PaysDelivrance; }
     public void setCreatedAT(Date CreatedAT){ this.createdAT = CreatedAT; }
