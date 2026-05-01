@@ -18,6 +18,9 @@ public class Demande {
     
     /* Foreign key */
     @ManyToOne
+    private Passeport passeport;
+    
+    @ManyToOne
     private TypeDemande typeDemande;
 
     @ManyToOne
