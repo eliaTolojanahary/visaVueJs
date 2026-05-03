@@ -20,6 +20,12 @@
 	</properties>
 
 	<dependencies>		
+		<!-- Pour lire les fichiers .env -->
+		<dependency>
+			<groupId>me.paulschwarz</groupId>
+			<artifactId>spring-dotenv</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 		<!-- QR Code generation -->
 		<dependency>
 			<groupId>com.google.zxing</groupId>
