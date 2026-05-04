@@ -536,7 +536,7 @@ Jemima — BACKEND (Ilay backOffice) (Spring Boot):
 
 
 Mioty — FRONTEND (Vue.js)
-  branche: sprint 4/feature/utilisationEndPoint/historiqueStatutDemande
+  branche: sprint-4/feature/utilisationEndPoint/historiqueStatutDemande
 
 1. Créer la page principale de recherche :
     - Champ saisie : Numéro de demande OU Numéro de passeport
