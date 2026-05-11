@@ -12,9 +12,14 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
                 // Utiliser allowedOriginPatterns au lieu de allowedOrigins pour permettre credentials
                 .allowedOriginPatterns(
-                    "http://localhost:*",
-                    "http://127.0.0.1:*",
-                    "http://192.168.*:*"
+                    "http://localhost:5173",
+                    "http://127.0.0.1:5173",
+                    "http://192.168.*:5173",
+                    "http://localhost:8080",
+                    "http://127.0.0.1:8080",
+                    "http://192.168.*:8080",
+                    "http://localhost:8084",
+                    "http://127.0.0.1:8084"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
