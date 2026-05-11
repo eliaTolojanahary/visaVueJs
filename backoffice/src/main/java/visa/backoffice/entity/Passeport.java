@@ -2,6 +2,7 @@ package visa.backoffice.entity;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,11 +20,22 @@ public class Passeport {
     @ManyToOne
     private Demandeur demandeur;
 
+    @Column(name = "numero_passeport")
     private String numPasseport;
+    
+    @Column(name = "date_delivrance")
     private Date dateDelivrance;
+    
+    @Column(name = "date_expiration")
     private Date dateExp;
+    
+    @Column(name = "pays_delivrance")
     private String paysDelivrance;
+    
+    @Column(name = "created_at")
     private Date createdAT;
+    
+    @Column(name = "updated_at")
     private Date updatedAT;
     
     /* Setters */
