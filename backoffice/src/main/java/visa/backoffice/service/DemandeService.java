@@ -40,6 +40,12 @@ public class DemandeService {
         }
         
         Demande demandeCourante = demandeOpt.get();
+
+        // Vérifier que le passeport existe et a un numéro
+        if (demandeCourante.getPasseport() == null || demandeCourante.getPasseport().getNumPasseport() == null) {
+            return Collections.emptyMap();
+        }
+
         String numPasseport = demandeCourante.getPasseport().getNumPasseport();
         
         // Récupérer toutes les demandes du même passeport (ordre chronologique récent)
