@@ -1,16 +1,27 @@
-DROP TABLE IF EXISTS historique_statut; 
-
-CREATE TABLE IF NOT EXISTS historique_statut (
+CREATE TABLE IF NOT EXISTS photo (
     id BIGSERIAL PRIMARY KEY,
-    date_changement TIMESTAMP(6) WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    demande_id BIGINT NOT NULL,
-    statut_id BIGINT NOT NULL,
-    ancien_statut_id BIGINT,
-    CONSTRAINT historique_statut_demande_id_fkey FOREIGN KEY (demande_id) REFERENCES demande(id),
-    CONSTRAINT historique_statut_statut_id_fkey FOREIGN KEY (statut_id) REFERENCES statut_demande(id),
-    CONSTRAINT historique_statut_ancien_statut_id_fkey FOREIGN KEY (ancien_statut_id) REFERENCES statut_demande(id)
+    dossier_id BIGINT NOT NULL REFERENCES dossier(id) ON DELETE CASCADE,
+    chemin_fichier VARCHAR(512) NOT NULL,
+    nom_fichier VARCHAR(255) NOT NULL,
+    taille_bytes BIGINT,
+    mime_type VARCHAR(100),
+    date_capture TIMESTAMP NOT NULL DEFAULT NOW(),
+    uploaded_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
+CREATE INDEX idx_photo_dossier ON photo(dossier_id);
 
--- Créer les index
-CREATE INDEX idx_historique_statut_date ON historique_statut(date_changement);
-CREATE INDEX idx_historique_statut_demande ON historique_statut(demande_id);
+CREATE TABLE IF NOT EXISTS signature (
+    id BIGSERIAL PRIMARY KEY,
+    dossier_id BIGINT NOT NULL REFERENCES dossier(id) ON DELETE CASCADE,
+    chemin_fichier VARCHAR(512) NOT NULL,
+    nom_fichier VARCHAR(255) NOT NULL,
+    taille_bytes BIGINT,
+    mime_type VARCHAR(100),
+    date_capture TIMESTAMP NOT NULL DEFAULT NOW(),
+    uploaded_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+CREATE INDEX idx_signature_dossier ON signature(dossier_id);
+
+ALTER TABLE dossier 
+    ADD COLUMN IF NOT EXISTS scan_termine BOOLEAN NOT NULL DEFAULT FALSE,
+    ADD COLUMN IF NOT EXISTS date_scan_complete TIMESTAMP;
