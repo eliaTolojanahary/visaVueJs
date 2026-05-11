@@ -114,7 +114,8 @@ const apiHost = computed(() => {
 
 const mainDemande = computed(() => {
   if (!results.value) return null
-  return results.value.principale
+  return results.value.demandeCourante
+    || results.value.principale
     || results.value.demandePrincipale
     || (Array.isArray(results.value.demandes) ? results.value.demandes[0] : null)
     || (Array.isArray(results.value) ? results.value[0] : null)
@@ -123,8 +124,8 @@ const mainDemande = computed(() => {
 
 const otherDemandes = computed(() => {
   if (!results.value) return []
-  const others = results.value.autres
-    || results.value.autresDemandes
+  const others = results.value.autresDemandes
+    || results.value.autres
     || (Array.isArray(results.value.demandes) ? results.value.demandes.slice(1) : [])
     || (Array.isArray(results.value) ? results.value.slice(1) : [])
   return [...others].sort((a, b) =>
